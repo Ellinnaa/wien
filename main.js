@@ -25,3 +25,13 @@ marker.bindPopup(stephansdom.title).openPopup();
 L.control.scale({
     imperial:false, 
 }).addTo(map);
+
+// Sehenswürdigkeiten Standorte Wien
+async function loadSights(url) {
+    //console.log(url);
+    let respose = await fetch(url);
+    let jsondata = await Response.json();
+  //  console.log(jsondata);
+    L.geoJASON(jsondata).addTo(map);
+}
+loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
