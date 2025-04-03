@@ -45,7 +45,7 @@ async function loadSights(url) {
   //  console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> Stadt Wie</a>"
-    }).addTo(map);
+    }).addTo(overlays.sights);
 }
 
 //loadLines
@@ -56,7 +56,7 @@ async function loadLines(url) {
   //  console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> </a>"
-    }).addTo(map);
+    }).addTo(overlays.lines);
 }
 
 //load Stops
@@ -67,7 +67,7 @@ async function loadStops(url) {
   //  console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> Stadt Wien</a>"
-    }).addTo(map);
+    }).addTo(overlays.stops);
 }
 
 //loadZones
@@ -78,7 +78,7 @@ async function loadZones(url) {
   //  console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> Stadt Wien</a>"
-    }).addTo(map);
+    }).addTo(overlays.zones);
 }
 
 //GeoJSON laden und visualisieren
