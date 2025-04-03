@@ -12,7 +12,7 @@ let stephansdom = {
 let map = L.map("map").setView([stephansdom.lat, stephansdom.lng], stephansdom.zoom);
 
 //Overlays definieren
-let overlays={ 
+let overlays = {
     sights: L.featureGroup().addTo(map),
     lines: L.featureGroup().addTo(map),
     stops: L.featureGroup().addTo(map),
@@ -21,14 +21,14 @@ let overlays={
 
 //Layercontrol
 L.control.layers({
-"BasemapAT " : L.tileLayer.provider('BasemapAT.basemap').addTo(map),
-"BasemapAT grau" : L.tileLayer.provider('BasemapAT.grau'),
-"BasemapAT Overlay" : L.tileLayer.provider('BasemapAT.overlay'),
-"BasemapAT terrain" : L.tileLayer.provider('BasemapAT.terrain'),
-"BasemapAT surface" : L.tileLayer.provider('BasemapAT.surface'),
-"BasemapAT highdpi" : L.tileLayer.provider('BasemapAT.highdpi'),
-"BasemapAT orthofoto" : L.tileLayer.provider('BasemapAT.orthofoto'),
-"BasemapAT standaard" : L.tileLayer.provider('nlmaps.standaard'),
+    "BasemapAT ": L.tileLayer.provider('BasemapAT.basemap').addTo(map),
+    "BasemapAT grau": L.tileLayer.provider('BasemapAT.grau'),
+    "BasemapAT Overlay": L.tileLayer.provider('BasemapAT.overlay'),
+    "BasemapAT terrain": L.tileLayer.provider('BasemapAT.terrain'),
+    "BasemapAT surface": L.tileLayer.provider('BasemapAT.surface'),
+    "BasemapAT highdpi": L.tileLayer.provider('BasemapAT.highdpi'),
+    "BasemapAT orthofoto": L.tileLayer.provider('BasemapAT.orthofoto'),
+    "BasemapAT standaard": L.tileLayer.provider('nlmaps.standaard'),
 
 }, {
     "Sehenswürdigkeiten": overlays.sights,
@@ -39,7 +39,7 @@ L.control.layers({
 
 //Maßstab, imperail ausschalten
 L.control.scale({
-    imperial:false, 
+    imperial: false,
 }).addTo(map);
 
 // Sehenswürdigkeiten Standorte Wien
@@ -47,7 +47,7 @@ async function loadSights(url) {
     //console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
-  //  console.log(jsondata);
+    //  console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> Stadt Wie</a>"
     }).addTo(overlays.sights);
@@ -58,7 +58,7 @@ async function loadLines(url) {
     //console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
-  //  console.log(jsondata);
+    //  console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> </a>"
     }).addTo(overlays.lines);
@@ -69,7 +69,7 @@ async function loadStops(url) {
     //console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
-  //  console.log(jsondata);
+    //  console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> Stadt Wien</a>"
     }).addTo(overlays.stops);
@@ -80,7 +80,7 @@ async function loadZones(url) {
     //console.log(url);
     let response = await fetch(url);
     let jsondata = await response.json();
-  //  console.log(jsondata);
+    //  console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> Stadt Wien</a>"
     }).addTo(overlays.zones);
