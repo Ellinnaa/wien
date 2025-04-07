@@ -96,7 +96,7 @@ async function loadHotels(url) {
     //  console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> Stadt Wien</a>"
-    }).addTo(overlays.zones);
+    }).addTo(overlays.hotels);
 }
 
 //GeoJSON laden und visualisieren
