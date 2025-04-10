@@ -51,7 +51,15 @@ async function loadSights(url) {
     let jsondata = await response.json();
     //  console.log(jsondata);
     L.geoJSON(jsondata, {
-        attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> Stadt Wie</a>"
+        attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> Stadt Wie</a>",
+        pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+                icon: L.icon({
+                    iconUrl: "icons/photo.png",
+                    iconAnchor: [16, 37]
+                })
+            });
+        }
     }).addTo(overlays.sights);
 }
 
@@ -81,7 +89,7 @@ async function loadLines(url) {
                 lineColor = "#111111"
             }
             return {
-               color: lineColor
+                color: lineColor
             }
         }
     }).addTo(overlays.lines);
