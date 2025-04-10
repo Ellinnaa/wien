@@ -62,7 +62,28 @@ async function loadLines(url) {
     let jsondata = await response.json();
     //  console.log(jsondata);
     L.geoJSON(jsondata, {
-        attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> </a>"
+        attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> </a>",
+        style: function (feature) {
+            console.log(feature.properties.LINE_NAME);
+            let lineColor;
+
+            if (feature.properties.LINE_NAME == "Yellow Line") {
+                lineColor = "#FFDC00";
+            } else if (feature.properties.LINE_NAME == "Blue Line") {
+                lineColor = "#0074D9";
+            } else if (feature.properties.LINE_NAME == "Red Line") {
+                lineColor = "#FF4136";
+            } else if (feature.properties.LINE_NAME == "Grey Line") {
+                lineColor = "#AAAAAA";
+            } else if (feature.properties.LINE_NAME == "Orange Line") {
+                lineColor = "#FF851B";
+            } else {
+                lineColor = "#111111"
+            }
+            return {
+               color: lineColor
+            }
+        }
     }).addTo(overlays.lines);
 }
 
@@ -85,13 +106,13 @@ async function loadZones(url) {
     //  console.log(jsondata);
     L.geoJSON(jsondata, {
         attribution: "Datenquelle:<a href= 'https://data.wien.gv.at'> Stadt Wien</a>",
-        style:function (feature) {
-           // console.log(feature)
+        style: function (feature) {
+            // console.log(feature)
             return {
                 color: "#F012BE",
-                weight:1,
-                opacity:0.4,
-                fillOpacity:0.1,
+                weight: 1,
+                opacity: 0.4,
+                fillOpacity: 0.1,
             }
         }
     }).addTo(overlays.zones);
